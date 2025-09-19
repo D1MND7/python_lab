@@ -1,12 +1,16 @@
 # python_lab
 #lab1
 ### Задание 1
+```python
 name = input("Имя: ")
 age = input("Возраст: ")
 print("Првиет, " + name + "!", "Через год тебе будет " + str(int(age)+1) + ".")
+```
 [Картинка 1]()
 
+
 ### Задание 2
+```
 a = input()
 b = float(input())
 print("a: " + a.replace('.', ','))
