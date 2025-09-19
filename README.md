@@ -6,7 +6,7 @@ name = input("Имя: ")
 age = input("Возраст: ")
 print("Првиет, " + name + "!", "Через год тебе будет " + str(int(age)+1) + ".")
 ```
-[Картинка 1](images\lab01\1.png)
+![1.png!](images\lab01\1.png)
 
 
 ### Задание 2
