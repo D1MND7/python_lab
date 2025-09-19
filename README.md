@@ -6,7 +6,7 @@ name = input("Имя: ")
 age = input("Возраст: ")
 print("Првиет, " + name + "!", "Через год тебе будет " + str(int(age)+1) + ".")
 ```
-![1.png!](images\lab01\1.png)
+![1.png](images\lab01\1.png)
 
 
 ### Задание 2
@@ -17,7 +17,7 @@ print("a: " + a.replace('.', ','))
 print("b: " + str(b))
 print("sum=" + f"{(float(a)+b):.2f}" + ";" + " avg=" + f"{(float(a)+b)/2:.2f}")
 ```
-[Картинка 1]()
+![2.png]()
 
 ### Задание 3
 ```python
@@ -31,14 +31,14 @@ print(f'База после скидки:{base:.2f}₽')
 print(f'НДС:{vat_amount:.2f}₽')
 print(f'Итого к оплате:{total:.2f}₽')
 ```
-[Картинка 1]()
+![3.png]()
 
 ### Задание 4
 ```python
 m = int(input("Минуты: "))
 print(str(m//60) + ":" + f"{(m%60):02d}")
 ```
-[Картинка 1]()
+![4.png]()
 
 ### Задание 5
 ```python
@@ -47,4 +47,4 @@ print("ФИО: ", a, b, c)
 print("Инициалы: ", a[0] + b[0] + c[0] + '.')
 print("Длина (символов): " + str(len(a) + len(b) + len(c) + 2))
 ```
-[Картинка 1]()
+![5.png]()
