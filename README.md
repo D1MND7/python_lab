@@ -17,7 +17,7 @@ print("a: " + a.replace('.', ','))
 print("b: " + str(b))
 print("sum=" + f"{(float(a)+b):.2f}" + ";" + " avg=" + f"{(float(a)+b)/2:.2f}")
 ```
-![2.png]()
+![2.png](images/lab01/2.png)
 
 ### Задание 3
 ```python
@@ -31,14 +31,14 @@ print(f'База после скидки:{base:.2f}₽')
 print(f'НДС:{vat_amount:.2f}₽')
 print(f'Итого к оплате:{total:.2f}₽')
 ```
-![3.png]()
+![3.png](images/lab01/3.png)
 
 ### Задание 4
 ```python
 m = int(input("Минуты: "))
 print(str(m//60) + ":" + f"{(m%60):02d}")
 ```
-![4.png]()
+![4.png](images/lab01/4.png)
 
 ### Задание 5
 ```python
@@ -47,4 +47,4 @@ print("ФИО: ", a, b, c)
 print("Инициалы: ", a[0] + b[0] + c[0] + '.')
 print("Длина (символов): " + str(len(a) + len(b) + len(c) + 2))
 ```
-![5.png]()
+![5.png](images/lab01/5.png)
