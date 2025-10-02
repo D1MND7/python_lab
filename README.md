@@ -1,6 +1,6 @@
 # python_lab
 #lab2
-### Задание 1arrays.py
+### arrays.py (min_max)
 ```python
 def min_max(mns_mxs):
     if len(mns_mxs) != 0:
@@ -13,7 +13,7 @@ min_max([-5, -2, -9])
 min_max([])
 min_max([1.5, 2, 2.0, -3.1])
 ```
-![1.png](images/lab01/1.png)
+![1.png]C:\Users\dimas\OneDrive\Рабочий стол\python_lab\images\lab02\a1.png)
 
 #lab1
 ### Задание 1
