@@ -14,7 +14,7 @@ min_max([])
 min_max([1.5, 2, 2.0, -3.1])
 ```
 ![1.png]C:\Users\dimas\OneDrive\Рабочий стол\python_lab\images\lab02\a1.png)
-###2 arrays.py (unique_sorted)
+### arrays.py (unique_sorted)
 ```python
 def unique_sorted(elements):
     elements = list(set(sorted(elements)))
@@ -26,7 +26,7 @@ print(unique_sorted([-1, -1, 0, 2, 2]))
 print(unique_sorted([1.0, 1, 2.5, 2.5, 0]))
 ```
 ![2.png]C:\Users\dimas\OneDrive\Рабочий стол\python_lab\images\lab02\a1.png)
-###3 arrays.py (flatten)
+### arrays.py (flatten)
 ```python
 def flatten(flatten_elem):
     result_sort = []
