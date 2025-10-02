@@ -14,7 +14,7 @@ min_max([-5, -2, -9])
 min_max([])
 min_max([1.5, 2, 2.0, -3.1])
 ```
-![a1.png]("C:\Users\dimas\OneDrive\Рабочий стол\python_lab\images\lab02\a1.png")
+![a1.png](images\lab02\a1.png)
 ### 2 arrays.py (unique_sorted)
 ```python
 def unique_sorted(elements):
@@ -42,7 +42,7 @@ print(flatten([[1, 2], (3, 4, 5)]))
 print(flatten([[1], [], [2, 3]]))
 print(flatten([[1, 2], "ab"]))
 ```
-![3.png]()
+![a3.png]()
 ### Задание2
 ### 1 matrix.py(transpose)
 ```python
@@ -115,7 +115,7 @@ print(col_sums([[1, 2], [3]]))
 
 
 ```
-![3.png]()
+![b3.png]()
 ### Задание3
 ### tuples.py
 ```python
