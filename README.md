@@ -26,7 +26,7 @@ print(unique_sorted([]))
 print(unique_sorted([-1, -1, 0, 2, 2]))
 print(unique_sorted([1.0, 1, 2.5, 2.5, 0]))
 ```
-![a2.png]()
+![a2.png](images/lab02/a2.png)
 ### 3 arrays.py (flatten)
 ```python
 def flatten(flatten_elem):
@@ -42,7 +42,7 @@ print(flatten([[1, 2], (3, 4, 5)]))
 print(flatten([[1], [], [2, 3]]))
 print(flatten([[1, 2], "ab"]))
 ```
-![a3.png]()
+![a3.png](images/lab02/a3.png)
 ### Задание2
 ### 1 matrix.py(transpose)
 ```python
@@ -68,7 +68,7 @@ print(transpose([[1, 2], [3, 4]]))
 print(transpose([]))
 print(transpose([[1, 2], [3]]))
 ```
-![b1.png](images\lab02\a1.png)
+![b1.png](images/lab02/b1.png)
 ### 2 matrix.py(row_sums)
 ```python
 def row_sums(sum_matrix):
@@ -90,7 +90,7 @@ print(row_sums([[-1, 1], [10, -10]]))
 print(row_sums([[0, 0], [0, 0]]))
 print(row_sums([[1, 2], [3]]))
 ```
-![b2.png]()
+![b2.png](images/lab02/b2.png)
 ### 3 matrix.py(col_sums)
 ```python
 def col_sums(col_matrix):
@@ -115,7 +115,7 @@ print(col_sums([[1, 2], [3]]))
 
 
 ```
-![b3.png]()
+![b3.png](images/lab02/b3.png)
 ### Задание3
 ### tuples.py
 ```python
@@ -146,7 +146,9 @@ format(("Петров Пётр", "IKBO-12", 5.0))
 format(("Петров Пётр Петрович", "IKBO-12", 5.0))
 format(("  сидорова  анна   сергеевна ", "ABB-01", 3.999))
 ```
-![3.png](images\lab02\a1.png)
+![3.png](images/lab02/3.png)
+
+
 
 
 #lab1
