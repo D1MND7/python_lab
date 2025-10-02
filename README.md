@@ -1,6 +1,6 @@
 # python_lab
 #lab2
-###1 arrays.py (min_max)
+### arrays.py (min_max)
 ```python
 def min_max(mns_mxs):
     if len(mns_mxs) != 0:
