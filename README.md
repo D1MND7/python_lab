@@ -1,5 +1,6 @@
 # python_lab
 #lab2
+### Задание1
 ### 1 arrays.py (min_max)
 ```python
 def min_max(mns_mxs):
