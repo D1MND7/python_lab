@@ -1,5 +1,5 @@
 # python_lab
-#lab2
+# lab2
 ### Задание1
 ### 1 arrays.py (min_max)
 ```python
