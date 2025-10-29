@@ -91,7 +91,7 @@ for word, count in top_words:
 
 main()
 ```
-![text_stats.png](https://github.com/D1MND7/python_lab/blob/main/images/lab03/text_stats.png)
+![text_stats.png](https://github.com/D1MND7/python_lab/blob/main/images/lab03/test_stats.png)
 # lab2
 ### Задание1
 ### 1 arrays.py (min_max)
