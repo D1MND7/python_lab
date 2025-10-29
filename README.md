@@ -56,6 +56,7 @@ print(count_freq(["bb","aa","bb","aa","cc"]))
 print(top_n({"a":3,"b":2,"c":1}, n=2))
 print(top_n({"aa":2,"bb":2,"cc":1}, n=2))
 ```
+![1.png](https://github.com/D1MND7/python_lab/blob/main/images/lab03/text.png)
 ## Задание2
 ### text_stats.py
 ```python
