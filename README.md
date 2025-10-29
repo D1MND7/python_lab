@@ -56,7 +56,40 @@ print(count_freq(["bb","aa","bb","aa","cc"]))
 print(top_n({"a":3,"b":2,"c":1}, n=2))
 print(top_n({"aa":2,"bb":2,"cc":1}, n=2))
 ```
+## Задание2
+### text_stats.py
+```python
+import sys
+import os
 
+sys.path.append('/Users\dimas\OneDrive\Рабочий стол\python_lab-1\src\lib') 
+from text import *
+
+text = input()
+tokens = []
+def main():
+    if not text:
+        print("Ввод не предоставлен")
+        return
+    normalized_text = normalize(text)
+
+for word in normalize(text).split():
+    clean_word = word.strip('.,!!!!?;:"()[]{}')
+    if clean_word:
+        tokens.append(clean_word)
+
+total_words = len(tokens)
+freq_dict = count_freq(tokens)
+unique_words = len(freq_dict)
+top_words = top_n(freq_dict, 5)
+print(f"Всего слов: {total_words}")
+print(f"Уникальных слов: {unique_words}")
+print("Топ-5:")
+for word, count in top_words:
+        print(f"{word}:{count}")
+
+main()
+```
 # lab2
 ### Задание1
 ### 1 arrays.py (min_max)
