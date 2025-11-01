@@ -106,6 +106,11 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+## Тест‑кейсы
+### 3
+![text.png](https://github.com/D1MND7/python_lab/blob/main/images/lab04/3.input.txt.png)
+![text.png](https://github.com/D1MND7/python_lab/blob/main/images/lab04/3.reprt.csv.png)
+![text.png](https://github.com/D1MND7/python_lab/blob/main/images/lab04/3.png)
 # lab3
 ## Задание1
 ### text.py
