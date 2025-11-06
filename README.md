@@ -235,7 +235,7 @@ def main():
 if __name__ == "__main__":
     sys.exit(main())
 ```
-![text.png](https://github.com/D1MND7/python_lab/tree/main/images/lab05)
+![text.png](images/lab05/1.png)
 ![text.png]()
 # lab4
 ## Задание1
