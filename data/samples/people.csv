@@ -1,0 +1,4 @@
+name,age,city,email,phone
+Alice,22,SPB,alice@example.com,
+Bob,25,Moscow,,+7-999-123-45-67
+Charlie,30,Novosibirsk,charlie@test.ru,+7-999-765-43-21
