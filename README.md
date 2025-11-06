@@ -236,7 +236,7 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 ![text.png](images/lab05/1.png)
-![text.png]()
+![text.png](images/lab05/2.png)
 # lab4
 ## Задание1
 ### io_txt_csv.py
