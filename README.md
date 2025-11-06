@@ -112,9 +112,9 @@ if __name__ == "__main__":
 ![text.png](https://github.com/D1MND7/python_lab/blob/main/images/lab04/1.report.csv.png)
 ![text.png](https://github.com/D1MND7/python_lab/blob/main/images/lab04/1.png)
 ### 2
-![text.png]()
-![text.png]()
-![text.png]()
+![text.png](https://github.com/D1MND7/python_lab/blob/main/images/lab04/2.input.txt.png)
+![text.png](https://github.com/D1MND7/python_lab/blob/main/images/lab04/2.report.csv.png)
+![text.png](https://github.com/D1MND7/python_lab/blob/main/images/lab04/2.png)
 ### 3
 ![text.png](https://github.com/D1MND7/python_lab/blob/main/images/lab04/3.input.txt.png)
 ![text.png](https://github.com/D1MND7/python_lab/blob/main/images/lab04/3.reprt.csv.png)
