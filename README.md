@@ -1,4 +1,242 @@
 # python_lab
+# lab5
+## Задание1
+### json_csv.py
+```python
+import json
+import csv
+from pathlib import Path
+
+
+def json_to_csv(json_path: str, csv_path: str) -> None:
+    
+    json_path = Path(json_path)
+    csv_path = Path(csv_path)
+    
+   
+    if not json_path.exists():
+        raise FileNotFoundError(f"JSON файл не найден: {json_path}")
+    
+    
+    try:
+        with json_path.open('r', encoding='utf-8') as json_file:
+            data = json.load(json_file)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Ошибка декодирования JSON: {e}")
+    
+   
+    if not data:
+        raise ValueError("Пустой JSON или неподдерживаемая структура")
+    
+    if not isinstance(data, list):
+        raise ValueError("JSON должен содержать список объектов")
+    
+    if not all(isinstance(item, dict) for item in data):
+        raise ValueError("Все элементы JSON должны быть словарями")
+    
+    if len(data) == 0:
+        raise ValueError("Пустой список в JSON")
+    
+    
+    all_fields = set()
+    for item in data:
+        all_fields.update(item.keys())
+    fieldnames = sorted(all_fields)
+    
+
+    try:
+        with csv_path.open('w', newline='', encoding='utf-8') as csv_file:
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+            writer.writeheader()
+            
+            for item in data:
+                
+                row = {field: item.get(field, '') for field in fieldnames}
+                writer.writerow(row)
+                
+    except Exception as e:
+        raise ValueError(f"Ошибка записи CSV: {e}")
+
+
+def csv_to_json(csv_path: str, json_path: str) -> None:
+    
+    csv_path = Path(csv_path)
+    json_path = Path(json_path)
+    
+   
+    if not csv_path.exists():
+        raise FileNotFoundError(f"CSV файл не найден: {csv_path}")
+    
+   
+    try:
+        with csv_path.open('r', encoding='utf-8') as csv_file:
+            
+            sample = csv_file.read(1024)
+            csv_file.seek(0)
+            
+            sniffer = csv.Sniffer()
+            dialect = sniffer.sniff(sample)
+            has_header = sniffer.has_header(sample)
+            
+            if not has_header:
+                raise ValueError("CSV файл должен содержать заголовок")
+            
+            reader = csv.DictReader(csv_file, dialect=dialect)
+            rows = list(reader)
+            
+    except Exception as e:
+        raise ValueError(f"Ошибка чтения CSV: {e}")
+    
+  
+    if not rows:
+        raise ValueError("Пустой CSV файл")
+    
+
+    try:
+        with json_path.open('w', encoding='utf-8') as json_file:
+            json.dump(rows, json_file, ensure_ascii=False, indent=2)
+            
+    except Exception as e:
+        raise ValueError(f"Ошибка записи JSON: {e}")
+        
+```
+## Задание2
+### csv_xlsx.py
+```python
+import csv
+from pathlib import Path
+from openpyxl import Workbook
+from openpyxl.utils import get_column_letter
+
+
+def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
+    
+    csv_path = Path(csv_path)
+    xlsx_path = Path(xlsx_path)
+    
+    
+    if not csv_path.exists():
+        raise FileNotFoundError(f"CSV файл не найден: {csv_path}")
+   
+    try:
+        with csv_path.open('r', encoding='utf-8') as csv_file:
+           
+            sample = csv_file.read(1024)
+            csv_file.seek(0)
+            
+            sniffer = csv.Sniffer()
+            dialect = sniffer.sniff(sample)
+            has_header = sniffer.has_header(sample)
+            
+            if not has_header:
+                raise ValueError("CSV файл должен содержать заголовок")
+            
+            reader = csv.reader(csv_file, dialect=dialect)
+            rows = list(reader)
+            
+    except Exception as e:
+        raise ValueError(f"Ошибка чтения CSV: {e}")
+    
+    
+    if not rows:
+        raise ValueError("Пустой CSV файл")
+    
+    try:
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Sheet1"
+        
+     
+        for row in rows:
+            ws.append(row)
+        
+       
+        for col_idx, _ in enumerate(rows[0], 1):
+            column_letter = get_column_letter(col_idx)
+            max_length = 0
+            
+            for row_idx, row in enumerate(rows, 1):
+                cell_value = str(row[col_idx - 1]) if len(row) >= col_idx else ""
+                max_length = max(max_length, len(cell_value))
+            
+            
+            adjusted_width = max(max_length + 2, 8)
+            ws.column_dimensions[column_letter].width = adjusted_width
+        
+        
+        wb.save(str(xlsx_path))
+        
+    except Exception as e:
+        raise ValueError(f"Ошибка создания XLSX: {e}")
+```
+### test.py
+```python
+import sys
+import os
+from pathlib import Path
+
+# Добавляем корневую директорию проекта в Python path
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root))
+
+from src.lab05.json_csv import json_to_csv, csv_to_json
+from src.lab05.csv_xlsx import csv_to_xlsx
+
+
+def main():
+    """Основная функция тестирования"""
+    print("=== Тестирование Lab05: Конвертации JSON, CSV, XLSX ===\n")
+    
+    # Создаем директорию для выходных файлов
+    out_dir = Path('data/out')
+    out_dir.mkdir(parents=True, exist_ok=True)
+    
+    try:
+        # 1. JSON → CSV
+        print("1. Конвертация JSON → CSV")
+        json_to_csv('data/samples/people.json', 'data/out/people_from_json.csv')
+        print("   ✓ Успешно: data/out/people_from_json.csv")
+        
+        # 2. CSV → JSON
+        print("2. Конвертация CSV → JSON")
+        csv_to_json('data/samples/people.csv', 'data/out/people_from_csv.json')
+        print("   ✓ Успешно: data/out/people_from_csv.json")
+        
+        # 3. CSV → XLSX 
+        print("3. Конвертация CSV → XLSX (people)")
+        csv_to_xlsx('data/samples/people.csv', 'data/out/people.xlsx')
+        print("   ✓ Успешно: data/out/people.xlsx")
+        
+        # 4. CSV → XLSX 
+        print("4. Конвертация CSV → XLSX (cities)")
+        csv_to_xlsx('data/samples/cities.csv', 'data/out/cities.xlsx')
+        print("   ✓ Успешно: data/out/cities.xlsx")
+        
+        # 5. Обратная конвертация для проверки обратимости
+        print("5. Проверка обратимости JSON ↔ CSV")
+        csv_to_json('data/out/people_from_json.csv', 'data/out/people_roundtrip.json')
+        json_to_csv('data/out/people_from_csv.json', 'data/out/people_roundtrip.csv')
+        print("   ✓ Успешно: выполнены обратные конвертации")
+        
+        print("\n=== Все операции завершены успешно! ===")
+        print("\nСозданные файлы:")
+        for file in out_dir.glob('*'):
+            print(f"  - {file}")
+            
+    except Exception as e:
+        print(f"\n Ошибка: {e}")
+        import traceback
+        traceback.print_exc()
+        return 1
+    
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+![text.png](https://github.com/D1MND7/python_lab/tree/main/images/lab05)
+![text.png]()
 # lab4
 ## Задание1
 ### io_txt_csv.py
