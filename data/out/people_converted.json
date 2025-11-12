@@ -1,17 +1,17 @@
 [
   {
     "name": "9mice",
-    "age": 24,
+    "age": "24",
     "city": "SPB"
   },
   {
     "name": "Kai",
-    "age": 27,
+    "age": "27",
     "city": "Moscow"
   },
   {
     "name": "Charles",
-    "age": 28,
-    "city": " Monte Carlo"
+    "age": "38",
+    "city": "Monte Carlo"
   }
 ]
