@@ -66,7 +66,7 @@ if args.command == "stats":
     stats(args.input, args.top)
 ```
 ![text.png](images/lab06/1.png)
-![text.png]()
+![text.png](images/lab06/2.png)
 
 ## Задание2
 ### cli_convert.py
@@ -114,9 +114,9 @@ if args.command == "csv2json":
 if args.command == "csv2xlsx":
     csv_to_xlsx(args.input, args.out)
 ```
-![text.png]()
-![text.png]()
-![text.png]()
+![text.png](images/lab06/3.png)
+![text.png](images/lab06/4.png)
+![text.png](images/lab06/5.png)
 # lab5
 ## Задание1
 ### json_csv.py
