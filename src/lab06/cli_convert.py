@@ -5,8 +5,8 @@ import os
 # Добавляем путь к корню проекта
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.lab05.csv_xlsx import csv_to_excel
-from src.lab05.json_csv import json_to_csv, csv_to_json
+from src.lab05.lab05_csv_xlsx import csv_to_excel
+from src.lab05.lab05_json_csv import json_to_csv, csv_to_json
 
 parser = argparse.ArgumentParser("CLI‑утилиты лабораторной №6")
 subparsers = parser.add_subparsers(dest="command")
