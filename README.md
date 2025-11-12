@@ -65,7 +65,7 @@ if args.command == "cat":
 if args.command == "stats":
     stats(args.input, args.top)
 ```
-![text.png]()
+![text.png](images/lab06/1.png)
 ![text.png]()
 
 ## Задание2
@@ -114,6 +114,7 @@ if args.command == "csv2json":
 if args.command == "csv2xlsx":
     csv_to_xlsx(args.input, args.out)
 ```
+![text.png]()
 ![text.png]()
 ![text.png]()
 # lab5
