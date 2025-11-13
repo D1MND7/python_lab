@@ -10,6 +10,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 try:
     from src.lib.text import *
 except ImportError:
+# Если импорт не работает, определяем функции прямо здесь
     import re
     from collections import Counter
     
