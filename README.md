@@ -6,14 +6,10 @@
 import argparse
 import sys
 import os
-
-# Добавляем путь к корню проекта
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 try:
     from src.lib.text import *
 except ImportError:
-    # Если импорт не работает, определяем функции прямо здесь
     import re
     from collections import Counter
     
@@ -75,7 +71,6 @@ import argparse
 import sys
 import os
 
-# Получаем абсолютный путь к корню проекта
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(os.path.dirname(current_dir))
 sys.path.insert(0, project_root)
