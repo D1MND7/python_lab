@@ -1,4 +1,16 @@
 # python_lab
+# lab7
+## Задание1
+### 
+```python
+```
+![text.png]()
+## Задание2
+### 
+```python
+```
+![text.png]()
+
 # lab6
 ## Задание1
 ### cli_text.py
