@@ -1,5 +1,20 @@
 import pytest
-from src.lib.text import normalize, tokenize, count_freq, top_n
+import sys
+import os
+
+# Прямо указываем путь к файлу
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + "/../src"))
+
+# Импортируем напрямую
+import importlib.util
+
+spec = importlib.util.spec_from_file_location("text", "src/lib/text.py")
+text_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(text_module)
+normalize = text_module.normalize
+tokenize = text_module.tokenize
+count_freq = text_module.count_freq
+top_n = text_module.top_n
 
 
 def test_normalize():

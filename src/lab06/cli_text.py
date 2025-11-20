@@ -3,26 +3,26 @@ import sys
 import os
 
 
-
 try:
     from src.lib.text import *
 except ImportError:
     # Если импорт не работает, определяем функции прямо здесь
     import re
     from collections import Counter
-    
+
     def normalize(text):
         return text.lower()
-    
+
     def tokenize(text):
-        words = re.findall(r'\b\w+\b', text)
+        words = re.findall(r"\b\w+\b", text)
         return words
-    
+
     def count_freq(words):
         return Counter(words)
-    
+
     def top_n(word_counts, n=5):
         return word_counts.most_common(n)
+
 
 def cat(text, n):
     file = open(text, "r").readlines()
@@ -34,11 +34,13 @@ def cat(text, n):
         for i in file:
             print(i[0], i[1].replace("\n", ""))
 
+
 def stats(txt, n):
     file = open(txt, "r").read()
     txt = top_n(count_freq(tokenize(normalize(file))), n)
     for a in txt:
         print(a[1], a[0])
+
 
 parser = argparse.ArgumentParser("CLI‑утилиты лабораторной №6")
 subparsers = parser.add_subparsers(dest="command")

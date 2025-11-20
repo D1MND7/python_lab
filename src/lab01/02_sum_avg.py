@@ -1,5 +1,5 @@
 a = input()
 b = float(input())
-print("a: " + a.replace('.', ','))
+print("a: " + a.replace(".", ","))
 print("b: " + str(b))
 print("sum=" + f"{(float(a)+b):.2f}" + ";" + " avg=" + f"{(float(a)+b)/2:.2f}")

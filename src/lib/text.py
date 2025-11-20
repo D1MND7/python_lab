@@ -10,7 +10,8 @@ def tokenize(text: str) -> list[str]:
     if not text.strip():
         return []
     import re
-    words = re.findall(r'\b\w+\b', text.lower())
+
+    words = re.findall(r"\b\w+\b", text.lower())
     return words
 
 
