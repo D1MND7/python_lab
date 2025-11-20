@@ -103,8 +103,7 @@ def test_csv_to_json_basic(tmp_path):
     assert data[0]["name"] == "Alice"
 ```
 ![text.png](images/lab07/2.png)
-## Black
-### 
+### Black
 ```python
 [build-system]
 requires = ["setuptools>=45.0", "wheel"]
