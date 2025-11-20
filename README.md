@@ -1,4 +1,118 @@
 # python_lab
+# lab6
+## Задание1
+### cli_text.py
+```python
+import argparse
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+try:
+    from src.lib.text import *
+except ImportError:
+# Если импорт не работает, определяем функции прямо здесь
+    import re
+    from collections import Counter
+    
+    def normalize(text):
+        return text.lower()
+    
+    def tokenize(text):
+        words = re.findall(r'\b\w+\b', text)
+        return words
+    
+    def count_freq(words):
+        return Counter(words)
+    
+    def top_n(word_counts, n=5):
+        return word_counts.most_common(n)
+
+def cat(text, n):
+    file = open(text, "r").readlines()
+    if not n:
+        for i in file:
+            print(i.replace("\n", ""))
+    else:
+        file = enumerate(file)
+        for i in file:
+            print(i[0], i[1].replace("\n", ""))
+
+def stats(txt, n):
+    file = open(txt, "r").read()
+    txt = top_n(count_freq(tokenize(normalize(file))), n)
+    for a in txt:
+        print(a[1], a[0])
+
+parser = argparse.ArgumentParser("CLI‑утилиты лабораторной №6")
+subparsers = parser.add_subparsers(dest="command")
+
+cat_parser = subparsers.add_parser("cat", help="Вывести содержимое файла")
+cat_parser.add_argument("--input", required=True)
+cat_parser.add_argument("-n", action="store_true", help="Нумировать строки")
+
+stats_parser = subparsers.add_parser("stats", help="Частоты слез")
+stats_parser.add_argument("--input", required=True)
+stats_parser.add_argument("--top", type=int, default=5)
+
+args = parser.parse_args()
+
+if args.command == "cat":
+    cat(args.input, args.n)
+
+if args.command == "stats":
+    stats(args.input, args.top)
+```
+![text.png](images/lab06/1.png)
+![text.png](images/lab06/2.png)
+
+## Задание2
+### cli_convert.py
+```python
+import argparse
+import sys
+import os
+# Получаем абсолютный путь к корню проекта
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(os.path.dirname(current_dir))
+sys.path.insert(0, project_root)
+
+try:
+    from src.lab05.lab05_csv_xlsx import csv_to_xlsx
+    from src.lab05.lab05_json_csv import json_to_csv, csv_to_json
+except ImportError as e:
+    print(f"Ошибка импорта: {e}")
+    print("Убедитесь, что файлы lab05_csv_xlsx.py и lab05_json_csv.py существуют в src/lab05/")
+    sys.exit(1)
+
+parser = argparse.ArgumentParser("CLI‑утилиты лабораторной №6")
+subparsers = parser.add_subparsers(dest="command")
+
+json2csv_parser = subparsers.add_parser("json2csv", help="Перевести json в csv")
+json2csv_parser.add_argument("--in", required=True, dest='input')
+json2csv_parser.add_argument("--out", required=True)
+
+csv2json_parser = subparsers.add_parser("csv2json", help="Перевести csv в json")
+csv2json_parser.add_argument("--in", required=True, dest='input')
+csv2json_parser.add_argument("--out", required=True)
+
+csv2xlsx_parser = subparsers.add_parser("csv2xlsx", help="Перевести csv в xlsx")
+csv2xlsx_parser.add_argument("--in", required=True, dest='input')
+csv2xlsx_parser.add_argument("--out", required=True)
+
+args = parser.parse_args()
+
+if args.command == "json2csv":
+    json_to_csv(args.input, args.out)
+
+if args.command == "csv2json":
+    csv_to_json(args.input, args.out)
+
+if args.command == "csv2xlsx":
+    csv_to_xlsx(args.input, args.out)
+```
+![text.png](images/lab06/3.png)
+![text.png](images/lab06/4.png)
+![text.png](images/lab06/5.png)
 # lab5
 ## Задание1
 ### json_csv.py
