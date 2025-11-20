@@ -10,6 +10,11 @@
 ```python
 ```
 ![text.png]()
+## 
+### 
+```python
+```
+![text.png]()
 # lab6
 ## Задание1
 ### cli_text.py
