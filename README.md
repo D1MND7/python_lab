@@ -1,20 +1,121 @@
 # python_lab
 # lab7
 ## Задание1
-### 
+### test_text.py
 ```python
+import pytest
+import sys
+import os
+
+# Прямо указываем путь к файлу
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + "/../src"))
+
+# Импортируем напрямую
+import importlib.util
+
+spec = importlib.util.spec_from_file_location("text", "src/lib/text.py")
+text_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(text_module)
+normalize = text_module.normalize
+tokenize = text_module.tokenize
+count_freq = text_module.count_freq
+top_n = text_module.top_n
+
+
+def test_normalize():
+    assert normalize("ПрИвЕт МИР") == "привет мир"
+    assert normalize("  много   пробелов  ") == "много пробелов"
+    assert normalize("") == ""
+
+
+def test_tokenize():
+    assert tokenize("привет мир") == ["привет", "мир"]
+    assert tokenize("один, два. три!") == ["один", "два", "три"]
+    assert tokenize("") == []
+
+
+def test_count_freq():
+    tokens = ["яблоко", "банан", "яблоко"]
+    result = count_freq(tokens)
+    assert result == {"яблоко": 2, "банан": 1}
+
+
+def test_top_n():
+    freq = {"a": 5, "b": 3, "c": 8, "d": 1}
+    result = top_n(freq, 2)
+    assert result == [("c", 8), ("a", 5)]
+
+
+def test_top_n_tie():
+    freq = {"z": 3, "a": 3, "b": 3}
+    result = top_n(freq, 3)
+    assert result == [("a", 3), ("b", 3), ("z", 3)]
 ```
-![text.png]()
+![text.png](images/lab07/1.png)
 ## Задание2
-### 
+### test_json_csv.py
 ```python
+import pytest
+import json
+import csv
+from pathlib import Path
+import sys
+import os
+
+# Добавляем src в путь
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+
+# Простой импорт
+from lab05.json_csv import json_to_csv, csv_to_json
+
+
+def test_json_to_csv_basic(tmp_path):
+    src = tmp_path / "test.json"
+    dst = tmp_path / "test.csv"
+
+    data = [{"name": "Alice", "age": 25}, {"name": "Bob", "age": 30}]
+    src.write_text(json.dumps(data), encoding="utf-8")
+
+    json_to_csv(str(src), str(dst))
+
+    with open(dst, "r", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+
+    assert len(rows) == 2
+    assert rows[0]["name"] == "Alice"
+
+
+def test_csv_to_json_basic(tmp_path):
+    src = tmp_path / "test.csv"
+    dst = tmp_path / "test.json"
+
+    with open(src, "w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["name", "age"])
+        writer.writeheader()
+        writer.writerow({"name": "Alice", "age": "25"})
+
+    csv_to_json(str(src), str(dst))
+
+    with open(dst, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    assert len(data) == 1
+    assert data[0]["name"] == "Alice"
 ```
-![text.png]()
-## Black
-### 
+![text.png](images/lab07/2.png)
+### Black
 ```python
+[build-system]
+requires = ["setuptools>=45.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 88
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 ```
-![text.png]()
+![text.png](images/lab07/black.png)
 
 # lab6
 ## Задание1
