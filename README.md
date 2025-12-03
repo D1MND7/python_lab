@@ -319,6 +319,8 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+![text.png](images/lab09/1.png)
+![text.png](images/lab09/2.png)
 # lab8
 ### models.py
 ```python
