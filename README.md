@@ -257,6 +257,8 @@ if __name__ == "__main__":
   }
 ]
 ```
+![text.png](images/lab08/1.png)
+
 # lab7
 ## Задание1
 ### test_text.py
