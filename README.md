@@ -212,7 +212,7 @@ class SinglyLinkedList:
             current = current.next
         return " -> ".join(result) + " -> None"
 ```
-![text.png](images/lab10)
+![text.png](images/lab10/1.png)
 # lab9
 ### group.py
 ```python
