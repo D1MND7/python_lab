@@ -1,6 +1,39 @@
 from collections import deque
 from typing import Any, Optional
 
+class Stack:
+    """Стек на базе списка."""
+    
+    def __init__(self):
+        self._data = []
+    
+    def push(self, item):
+        """Добавить элемент на вершину стека."""
+        self._data.append(item)
+    
+    def pop(self):
+        """Удалить и вернуть элемент с вершины стека."""
+        if self.is_empty():
+            raise IndexError("pop from empty stack")
+        return self._data.pop()
+    
+    def peek(self):
+        """Вернуть элемент с вершины без удаления."""
+        if self.is_empty():
+            return None
+        return self._data[-1]
+    
+    def is_empty(self):
+        """Проверить, пуст ли стек."""
+        return len(self._data) == 0
+    
+    def __len__(self):
+        """Вернуть количество элементов."""
+        return len(self._data)
+    
+    def __repr__(self):
+        """Строковое представление."""
+        return f"Stack({self._data})"
 class Queue:
     """Реализация очереди на базе deque."""
     
